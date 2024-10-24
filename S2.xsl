@@ -8,7 +8,7 @@
                 <title>Weather Forecast</title>
                 <style>
                     table {
-                        width: 50%;
+                        width: 70%;
                         border-collapse: collapse;
                     }
                     table, th, td {
@@ -23,18 +23,27 @@
                         text-align: center;
                     }
 
-                    /* Make Date column narrow */
-                    th.date-col {
-                        width: 50px; /* Adjust width of the Date column */
-                    }
-
-                    td.date-col {
-                        width: 50px; /* Apply same width to corresponding td */
+                    th.date-col, td.date-col {
+                        width: 60px;
+                        background-color: aqua;
                     }
 
                     td {
-                        height: 150px; /* Control height of cells */
+                        height: 150px;
+                        vertical-align: top;
                     }
+
+                    img {
+                        width: 100px;
+                        height: 80px;
+                    }
+
+                    .sunny { color: orange; }
+                    .cloudy { color: gray; }
+                    .rain { color: blue; }
+                    .thunderstorm { color: purple; }
+                    .partlySunny { color: gold; }
+                    .default { color: black; }
                 </style>
             </head>
             <body>
@@ -53,7 +62,7 @@
                     
                     <xsl:for-each select="forecast/weather">
                         <tr>
-                            <!-- Format the date as 'day month' and apply narrow column -->
+                            <!-- Date column -->
                             <td class="date-col">
                                 <xsl:value-of select="date"/> 
                                 <xsl:text> </xsl:text>
@@ -72,13 +81,71 @@
                                     <xsl:when test="month = '12'">Dec</xsl:when>
                                 </xsl:choose>
                             </td>
-                            
-                            
+
+                            <!-- Display weather details based on dayOfWeek -->
+                            <xsl:choose>
+                                <xsl:when test="dayOfWeek = 'Mon'">
+                                    <td><xsl:call-template name="weatherCell"/></td><td/><td/><td/><td/><td/><td/>
+                                </xsl:when>
+                                <xsl:when test="dayOfWeek = 'Tues'">
+                                    <td/><td><xsl:call-template name="weatherCell"/></td><td/><td/><td/><td/><td/>
+                                </xsl:when>
+                                <xsl:when test="dayOfWeek = 'Wed'">
+                                    <td/><td/><td><xsl:call-template name="weatherCell"/></td><td/><td/><td/><td/>
+                                </xsl:when>
+                                <xsl:when test="dayOfWeek = 'Thu'">
+                                    <td/><td/><td/><td><xsl:call-template name="weatherCell"/></td><td/><td/><td/>
+                                </xsl:when>
+                                <xsl:when test="dayOfWeek = 'Fri'">
+                                    <td/><td/><td/><td/><td><xsl:call-template name="weatherCell"/></td><td/><td/>
+                                </xsl:when>
+                                <xsl:when test="dayOfWeek = 'Sat'">
+                                    <td/><td/><td/><td/><td/><td><xsl:call-template name="weatherCell"/></td><td/>
+                                </xsl:when>
+                                <xsl:when test="dayOfWeek = 'Sun'">
+                                    <td/><td/><td/><td/><td/><td/><td><xsl:call-template name="weatherCell"/></td>
+                                </xsl:when>
+                            </xsl:choose>
                         </tr>
                     </xsl:for-each>
                     
                 </table>
             </body>
         </html>
+    </xsl:template>
+
+    <!-- Template for displaying a weather cell -->
+    <xsl:template name="weatherCell">
+        <xsl:value-of select="concat(lowest, ' - ', highest)"/>
+        <br/>
+        <xsl:call-template name="overallImage"/>
+        <br/>
+        <span class="{overallCode}">
+            <xsl:value-of select="overall"/>
+        </span>
+    </xsl:template>
+
+    <!-- Template for displaying the weather icon -->
+    <xsl:template name="overallImage">
+        <xsl:choose>
+            <xsl:when test="overallCode = 'sunny'">
+                <img src="sunny.jpeg" alt="Sunny"/>
+            </xsl:when>
+            <xsl:when test="overallCode = 'cloudy'">
+                <img src="cloudy.jpeg" alt="Cloudy"/>
+            </xsl:when>
+            <xsl:when test="overallCode = 'rain'">
+                <img src="rain.jpeg" alt="Rain"/>
+            </xsl:when>
+            <xsl:when test="overallCode = 'thunderstorm'">
+                <img src="thunderstorm.jpeg" alt="Thunderstorm"/>
+            </xsl:when>
+            <xsl:when test="overallCode = 'partlySunny'">
+                <img src="partlySunny.jpeg" alt="Partly Sunny"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <img src="default.jpeg" alt="Weather"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>
