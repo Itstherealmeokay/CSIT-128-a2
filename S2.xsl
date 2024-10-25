@@ -30,7 +30,7 @@
 
                     td {
                         height: 150px;
-                        vertical-align: top;
+                        vertical-align: center;
                     }
 
                     img {
@@ -38,11 +38,11 @@
                         height: 80px;
                     }
 
-                    .sunny { color: orange; }
-                    .cloudy { color: gray; }
-                    .rain { color: blue; }
-                    .thunderstorm { color: purple; }
-                    .partlySunny { color: gold; }
+                    .sunny { color: red; }
+                    .cloudy { color: blue; }
+                    .rain { color: orange; }
+                    .thunderstorm { color: orange; }
+                    .partlySunny { color: red; }
                     .default { color: black; }
                 </style>
             </head>
@@ -116,7 +116,7 @@
 
     <!-- Template for displaying a weather cell -->
     <xsl:template name="weatherCell">
-        <xsl:value-of select="concat(lowest, ' - ', highest)"/>
+        <xsl:value-of select="lowest"/>&#176; - <xsl:value-of select="highest"/>&#176;
         <br/>
         <xsl:call-template name="overallImage"/>
         <br/>
