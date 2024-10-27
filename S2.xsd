@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://127.0.0.1:5500/A2.xml"
+           xmlns="http://127.0.0.1:5500/A2.xml"
+           elementFormDefault="qualified">
+
+  <xsd:element name="forecast">
+    <xsd:complexType>
+      <xsd:sequence>
+              <!-- Define the 'weather' element, allowing multiple occurrences -->
+              <xsd:element name="weather" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="year" type="xsd:int"/>
+                    <xsd:element name="month" type="xsd:int"/>
+                    <xsd:element name="date" type="xsd:int"/>
+                    <xsd:element name="dayOfWeek" type="xsd:string"/>
+                    <xsd:element name="overall" type="xsd:string"/>
+                    <xsd:element name="overallCode" type="xsd:string"/>
+                    <xsd:element name="highest" type="xsd:int"/>
+                    <xsd:element name="lowest" type="xsd:int"/>
+                  </xsd:sequence>
+                  <!-- Define attribute 'yyyymmdd' for 'weather' -->
+                  <xsd:attribute name="yyyymmdd" type="xsd:string" use="required"/>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+
+            <!-- Define attributes for 'forecast' -->
+            <xsd:attribute name="queryTime" type="xsd:string" use="required"/>
+            <xsd:attribute name="queryLocation" type="xsd:integer" use="required"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
