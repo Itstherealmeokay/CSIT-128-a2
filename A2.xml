@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <?xml-stylesheet type="text/xsl" href="S2.xsl"?>
-<forecast xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="S2.xsd" queryTime="4/11/2024 2:30 PM" queryLocation="Singapore">
+<forecast xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://127.0.0.1:5500/A2.xml S2.xsd" queryTime="4/11/2024 2:30 PM" queryLocation="Singapore">
   <weather yyyymmdd="20240531">
     <year>2024</year>
     <month>5</month>
-    <date>thirtyone</date>
+    <date>31</date>
     <dayOfWeek>Fri</dayOfWeek>
     <overall>Considerable clouds</overall>
     <overallCode>cloudy</overallCode>
