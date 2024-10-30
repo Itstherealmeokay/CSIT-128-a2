@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2-part 2</title>
+    <style>
+    </style>
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let intervalId; // To keep track of the interval
+            let score = 0; // To set the score zero
+
+            // Function to generate three unique random numbers
+            function generateRandomNumbers() {
+                let numbers = [];
+                while (numbers.length < 3) {
+                    let randomNum = Math.floor(Math.random() * 9) + 1;
+                    if (!numbers.includes(randomNum)) {
+                        numbers.push(randomNum);
+                    }
+                }
+                return numbers;
+            }
+
+            function updateScore() {
+                document.getElementById("score").innerHTML = score;
+            }
+
+            // Function to display the random numbers
+            function displayNumbers() {
+                let randomNumbers = generateRandomNumbers();
+                document.getElementById("firstNumber").innerHTML = randomNumbers[0];
+                document.getElementById("secondNumber").innerHTML = randomNumbers[1];
+                document.getElementById("thirdNumber").innerHTML = randomNumbers[2];
+
+                document.getElementById("firstNumber").onclick = function () {
+                    checkNumber(randomNumbers[0])
+                }
+                document.getElementById("secondNumber").onclick = function () {
+                    checkNumber(randomNumbers[1])
+                }
+                document.getElementById("thirdNumber").onclick = function () {
+                    checkNumber(randomNumbers[2])
+                }
+            }
+
+            // the function checkNumber is to check if the chosen number match with clicked number from the three random generators.
+            function checkNumber(clickedNumber) {
+                let chosenNumber = parseInt(document.getElementById("chosenNumber").value);
+                console.log(chosenNumber);
+                if (clickedNumber == chosenNumber) {
+                    score += 3 // if the clickedNumber is the same as the chosenNumber, the score will increase by 3 points.
+                } else {
+                    score -= 2 // if the clickedNumber is not the same as the chosenNumber, the score will deduct by -2 points.
+                }
+                updateScore(); // then update the score by updating it.
+            }
+
+            // Start the game and set the interval to generate numbers every 2 seconds
+            document.getElementById("startButton").addEventListener("click", function () {
+
+                // Reset the score to 0
+                document.getElementById("score").innerHTML = "0";
+
+                // Prevent starting a new interval if one is already running
+                if (!intervalId) {
+                    intervalId = setInterval(displayNumbers, 2000); // Call displayNumbers every 2 seconds
+                }
+            });
+
+            // Stop the game and clear the interval
+            document.getElementById("stopButton").addEventListener("click", function () {
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null; // Reset the intervalId
+                }
+            });
+            // when the user click on start game, it will reset the score to 0 and start the random number generator.
+            document.getElementById("startButton").addEventListener("reset", function () { })
+        });
+
+
+    </script>
+</head>
+
+
+<body>
+    <table border="1" cellpadding="10" cellspacing="0" width="60%"
+        style="text-align:center;margin:0;border-collapse:collapse;">
+        <tr>
+            <!-- NAME input field -->
+            <div class="title">
+                <td colspan="3" style="background-color:#F7CAAC"><label for="name">Part 2: Game</label></td>
+            </div>
+        </tr>
+        <tr class="game-panel">
+            <td style="background-color:#DEEAF6">
+                <div class="chosen-number"><b>Your chosen number:</div></b>
+            </td>
+            <div class="chosen-number-option">
+                <td style="background-color:#DEEAF6">Your chosen number:
+                    <select id="chosenNumber">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                    </select>
+                </td>
+            </div>
+            <td colspan="2" style="background-color:#FFF2CC"><b>Current Score: </b><span class="score"
+                    id="score">0</span></td>
+        </tr>
+        <tr>
+            <td colspan="3" style="background-color:#99FF99;">
+                <div class="button-container" style="display: flex; justify-content: center; align-items: center;">
+                    <div class="start-button" id="startButton" style="margin-right: 20px;">
+                        &ltStart Button&gt
+                    </div>
+                    <div class="stop-button" id="stopButton">
+                        &ltStop Game Button&gt
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="numbers">
+                    <div class="first-number" id="firstNumber" style="color:#C08F00">&lt1st number&gt</div>
+            </td>
+            <td>
+                <div class="second-number" id="secondNumber" style="color:#070BFF">&lt2nd number&gt</div>
+            </td>
+            <td>
+                <div class="third-number" id="thirdNumber" style="color:#538470">&lt3rd number&gt</div>
+            </td>
+            </div>
+        </tr>
+    </table>
+</body>
+
+</html>

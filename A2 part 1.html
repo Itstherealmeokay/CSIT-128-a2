@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2-G2T05-8551200,8575915,9070850(Goh Ching Fong, Harini Adinarayanan, Ho yean Kit)</title>
+
+    <style>
+        /* Giving table a border */
+        .detail-table {
+            border: 1px solid black;
+        }
+
+        /*Formatting Headers and Cells of Table */
+        .detail-table th,
+        .detail-table td {
+            border: 1px solid black;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /*Change background colour of header to lightblue*/
+        .detail-table th {
+            background-color: lightblue;
+        }
+
+        /* Creating a Flex container to produce elements in a row */
+        .flex-container {
+            display: flex;
+            align-items: center;
+        }
+        /* Formatting img inside of flex-container */
+        .flex-container img {
+            margin-right: 20px;
+            /* Spacing between image and text */
+            max-width: 150px;
+            /* Width of the image */
+        }
+
+        .part_4 {
+            font-size: 2em;
+            /* Example h1 style */
+            font-weight: bold;
+            margin: 0.67em 0;
+        }
+    </style>
+
+<body>
+    <!--Creating the table for name and ID-->
+    <div class="nameid table" >
+        <h1>Part 1</h1>
+        <table class="detail-table">
+            <tr>
+                <!--Format the cell to span 3 columns-->
+                <th colspan="3">CSIT 128: Assignment 2</th>
+                <th>Group G2T05</th>
+            </tr>
+            <tr>
+                <!--Format the cell to span 3 rows-->
+                <td rowspan="3">Student Number/Name/Email</td>
+                <td>8551200</td>
+                <td>Goh Ching Fong</td>
+                <td>cfg290@uowmail.edu.au</td>
+            </tr>
+            <tr>
+                <td>9070850</td>
+                <td>Ho Yean Kit</td>
+                <td>ykhyh373@uowmail.edu.au</td>
+            </tr>
+            <tr>
+                <td>8575915</td>
+                <td>Harini Adinarayanan</td>
+                <td>ha304@uowmail.edu.au</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <br>
