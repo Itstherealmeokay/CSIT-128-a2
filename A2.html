@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- HEAD -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A2-part 2</title>
-    <style>
-    </style>
-    <!-- JavaScript -->
+
+    <!-- JAVACRIPT -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            let intervalId; // To keep track of the interval
-            let score = 0; // To set the score zero
+            let intervalId; // To keep track of the interval.
+            let score = 0; // To set the score zero.
 
-            // Function to generate three unique random numbers
+            // Function to generate three unique random numbers.
             function generateRandomNumbers() {
-                let numbers = [];
+                let numbers = []; // pushing the numbers into the array from 1 to 10 first.
+                // while number is less than 3 digits (index 0, 1, 2).
                 while (numbers.length < 3) {
+                    // Math.floor(Math.random() * 9) + 1; It will randomize from 1 to 10.
                     let randomNum = Math.floor(Math.random() * 9) + 1;
-                    if (!numbers.includes(randomNum)) {
+                    if (!numbers.includes(randomNum)) { // if the repeated number has not repeated, it will push into the array.
                         numbers.push(randomNum);
                     }
                 }
                 return numbers;
             }
 
+            // It will update the score via through the element id "score".
             function updateScore() {
                 document.getElementById("score").innerHTML = score;
             }
 
-            // Function to display the random numbers
+            // Function to display the random numbers.
             function displayNumbers() {
+                // Calling function generateRandomNumbers in this function, displayNumbers to display each number.
                 let randomNumbers = generateRandomNumbers();
+                // allocating each number in each ID.
                 document.getElementById("firstNumber").innerHTML = randomNumbers[0];
                 document.getElementById("secondNumber").innerHTML = randomNumbers[1];
                 document.getElementById("thirdNumber").innerHTML = randomNumbers[2];
 
+                // Monitoring all clicks on each number to detect if the user has click on the correct or wrong number.
                 document.getElementById("firstNumber").onclick = function () {
                     checkNumber(randomNumbers[0])
                 }
@@ -56,50 +62,119 @@
                 } else {
                     score -= 2 // if the clickedNumber is not the same as the chosenNumber, the score will deduct by -2 points.
                 }
-                updateScore(); // then update the score by updating it.
+                updateScore(); // Then, update the score by updating it.
             }
 
-            // Start the game and set the interval to generate numbers every 2 seconds
+            // Start the game and set the interval to generate numbers every 2 seconds.
             document.getElementById("startButton").addEventListener("click", function () {
 
-                // Reset the score to 0
+                // Reset the score to 0 once the user clicks on the start button.
                 document.getElementById("score").innerHTML = "0";
 
-                // Prevent starting a new interval if one is already running
                 if (!intervalId) {
-                    intervalId = setInterval(displayNumbers, 2000); // Call displayNumbers every 2 seconds
+                    intervalId = setInterval(displayNumbers, 2000); // Call displayNumbers every 2 seconds.
                 }
             });
 
-            // Stop the game and clear the interval
+            // Stop the game and clear the interval.
             document.getElementById("stopButton").addEventListener("click", function () {
                 if (intervalId) {
                     clearInterval(intervalId);
-                    intervalId = null; // Reset the intervalId
+                    intervalId = null; // Reset the intervalId.
                 }
             });
             // when the user click on start game, it will reset the score to 0 and start the random number generator.
             document.getElementById("startButton").addEventListener("reset", function () { })
         });
-
-
     </script>
+
+    <style>
+        /* Giving table a border */
+        .detail-table {
+            border: 1px solid black;
+        }
+
+        /*Formatting Headers and Cells of Table */
+        .detail-table th,
+        .detail-table td {
+            border: 1px solid black;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /*Change background colour of header to lightblue*/
+        .detail-table th {
+            background-color: lightblue;
+        }
+
+        /* Creating a Flex container to produce elements in a row */
+        .flex-container {
+            display: flex;
+            align-items: center;
+        }
+        /* Formatting img inside of flex-container */
+        .flex-container img {
+            margin-right: 20px;
+            /* Spacing between image and text */
+            max-width: 150px;
+            /* Width of the image */
+        }
+
+        .part_4 {
+            font-size: 2em;
+            /* Example h1 style */
+            font-weight: bold;
+            margin: 0.67em 0;
+        }
+    </style>
 </head>
 
-
+<!-- BODY -->
 <body>
+
+     <!--Creating the table for name and ID-->
+     <div class="nameid table" >
+        <h1>Part 1</h1>
+        <table class="detail-table">
+            <tr>
+                <!--Format the cell to span 3 columns-->
+                <th colspan="3">CSIT 128: Assignment 2</th>
+                <th>Group G2T05</th>
+            </tr>
+            <tr>
+                <!--Format the cell to span 3 rows-->
+                <td rowspan="3">Student Number/Name/Email</td>
+                <td>8551200</td>
+                <td>Goh Ching Fong</td>
+                <td>cfg290@uowmail.edu.au</td>
+            </tr>
+            <tr>
+                <td>9070850</td>
+                <td>Ho Yean Kit</td>
+                <td>ykhyh373@uowmail.edu.au</td>
+            </tr>
+            <tr>
+                <td>8575915</td>
+                <td>Harini Adinarayanan</td>
+                <td>ha304@uowmail.edu.au</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <br>
+    <!-- Creating a table for part 2, JavaScript Game -->
     <table border="1" cellpadding="10" cellspacing="0" width="60%"
         style="text-align:center;margin:0;border-collapse:collapse;">
         <tr>
-            <!-- NAME input field -->
             <div class="title">
                 <td colspan="3" style="background-color:#F7CAAC"><label for="name">Part 2: Game</label></td>
             </div>
         </tr>
         <tr class="game-panel">
             <td style="background-color:#DEEAF6">
+                <!-- Your Chosen Number -->
                 <div class="chosen-number"><b>Your chosen number:</div></b>
             </td>
+            <!-- Chosen Number Selection range from 3 to 7 -->
             <div class="chosen-number-option">
                 <td style="background-color:#DEEAF6">Your chosen number:
                     <select id="chosenNumber">
@@ -111,15 +186,18 @@
                     </select>
                 </td>
             </div>
+            <!-- Current Score -->
             <td colspan="2" style="background-color:#FFF2CC"><b>Current Score: </b><span class="score"
                     id="score">0</span></td>
         </tr>
         <tr>
             <td colspan="3" style="background-color:#99FF99;">
                 <div class="button-container" style="display: flex; justify-content: center; align-items: center;">
+                    <!-- Start Button -->
                     <div class="start-button" id="startButton" style="margin-right: 20px;">
                         &ltStart Button&gt
                     </div>
+                    <!-- Stop Button -->
                     <div class="stop-button" id="stopButton">
                         &ltStop Game Button&gt
                     </div>
@@ -128,6 +206,7 @@
         </tr>
         <tr>
             <td>
+                <!-- Three Generated Numbers -->
                 <div class="numbers">
                     <div class="first-number" id="firstNumber" style="color:#C08F00">&lt1st number&gt</div>
             </td>
