@@ -2,12 +2,16 @@
 <html lang="en">
 
 <!-- HEAD -->
+<<<<<<< HEAD:part_2.html
 
+=======
+>>>>>>> 8849896da50c079bd09c93b36343896871514d1f:A2.html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A2-part 2</title>
 
+<<<<<<< HEAD:part_2.html
     <!-- STYLE -->
     <style>
         .button-container {
@@ -19,12 +23,17 @@
         }
     </style>
 
+=======
+>>>>>>> 8849896da50c079bd09c93b36343896871514d1f:A2.html
     <!-- JAVACRIPT -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             let intervalId; // To keep track of the interval.
             let score = 0; // To set the score zero.
+<<<<<<< HEAD:part_2.html
             let gameRunning = false; // To set the game running to false.
+=======
+>>>>>>> 8849896da50c079bd09c93b36343896871514d1f:A2.html
 
             // Function to generate three unique random numbers.
             function generateRandomNumbers() {
@@ -80,6 +89,7 @@
 
             // Start the game and set the interval to generate numbers every 2 seconds.
             document.getElementById("startButton").addEventListener("click", function () {
+<<<<<<< HEAD:part_2.html
                 // Reset score and enable chosen number selection
                 score = 0;
                 updateScore();
@@ -93,13 +103,28 @@
             });
 
             // When the user clicks on stop button, the game and clear the interval.
+=======
+
+                // Reset the score to 0 once the user clicks on the start button.
+                document.getElementById("score").innerHTML = "0";
+
+                if (!intervalId) {
+                    intervalId = setInterval(displayNumbers, 2000); // Call displayNumbers every 2 seconds.
+                }
+            });
+
+            // Stop the game and clear the interval.
+>>>>>>> 8849896da50c079bd09c93b36343896871514d1f:A2.html
             document.getElementById("stopButton").addEventListener("click", function () {
                 if (intervalId) {
                     clearInterval(intervalId);
                     intervalId = null; // Reset the intervalId.
+<<<<<<< HEAD:part_2.html
                     document.getElementById("chosenNumber").disabled = false; // enable for chosen number after selecting a chosen number
                     document.getElementById("startButton").disabled = false; // enable for start button once the game is running.
                     gameRunning = false; // set to false to prevent from the game running.
+=======
+>>>>>>> 8849896da50c079bd09c93b36343896871514d1f:A2.html
                 }
             });
 
@@ -109,11 +134,85 @@
             })
         });
     </script>
+
+    <style>
+        /* Giving table a border */
+        .detail-table {
+            border: 1px solid black;
+        }
+
+        /*Formatting Headers and Cells of Table */
+        .detail-table th,
+        .detail-table td {
+            border: 1px solid black;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /*Change background colour of header to lightblue*/
+        .detail-table th {
+            background-color: lightblue;
+        }
+
+        /* Creating a Flex container to produce elements in a row */
+        .flex-container {
+            display: flex;
+            align-items: center;
+        }
+        /* Formatting img inside of flex-container */
+        .flex-container img {
+            margin-right: 20px;
+            /* Spacing between image and text */
+            max-width: 150px;
+            /* Width of the image */
+        }
+
+        .part_4 {
+            font-size: 2em;
+            /* Example h1 style */
+            font-weight: bold;
+            margin: 0.67em 0;
+        }
+    </style>
 </head>
 
 <!-- BODY -->
+<<<<<<< HEAD:part_2.html
 
 <body>
+=======
+<body>
+
+     <!--Creating the table for name and ID-->
+     <div class="nameid table" >
+        <h1>Part 1</h1>
+        <table class="detail-table">
+            <tr>
+                <!--Format the cell to span 3 columns-->
+                <th colspan="3">CSIT 128: Assignment 2</th>
+                <th>Group G2T05</th>
+            </tr>
+            <tr>
+                <!--Format the cell to span 3 rows-->
+                <td rowspan="3">Student Number/Name/Email</td>
+                <td>8551200</td>
+                <td>Goh Ching Fong</td>
+                <td>cfg290@uowmail.edu.au</td>
+            </tr>
+            <tr>
+                <td>9070850</td>
+                <td>Ho Yean Kit</td>
+                <td>ykhyh373@uowmail.edu.au</td>
+            </tr>
+            <tr>
+                <td>8575915</td>
+                <td>Harini Adinarayanan</td>
+                <td>ha304@uowmail.edu.au</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <br>
+>>>>>>> 8849896da50c079bd09c93b36343896871514d1f:A2.html
     <!-- Creating a table for part 2, JavaScript Game -->
     <table border="1" cellpadding="10" cellspacing="0" width="60%"
         style="text-align:center;margin:0;border-collapse:collapse;">
@@ -123,6 +222,7 @@
             </div>
         </tr>
         <tr class="game-panel">
+<<<<<<< HEAD:part_2.html
             <td style="background-color:#DEEAF6; width:30%">
                 <!-- Your Chosen Number -->
                 <div class="chosen-number">
@@ -130,6 +230,12 @@
                 </div>
             </td>
 
+=======
+            <td style="background-color:#DEEAF6">
+                <!-- Your Chosen Number -->
+                <div class="chosen-number"><b>Your chosen number:</div></b>
+            </td>
+>>>>>>> 8849896da50c079bd09c93b36343896871514d1f:A2.html
             <!-- Chosen Number Selection range from 3 to 7 -->
             <div class="chosen-number-option">
                 <td style="background-color:#DEEAF6;width:20%">
@@ -143,17 +249,32 @@
                 </td>
             </div>
             <!-- Current Score -->
+<<<<<<< HEAD:part_2.html
             <td colspan="2" style="background-color:#FFF2CC;width:30%"><b>Current Score:</b><span class="score"
                     id="score" style="color:red;"><b>0</b></span></td>
+=======
+            <td colspan="2" style="background-color:#FFF2CC"><b>Current Score: </b><span class="score"
+                    id="score">0</span></td>
+>>>>>>> 8849896da50c079bd09c93b36343896871514d1f:A2.html
         </tr>
         <tr>
             <td colspan="3" style="background-color:#99FF99;">
                 <div class="button-container" style="display: flex; justify-content: center; align-items: center;">
                     <!-- Start Button -->
+<<<<<<< HEAD:part_2.html
                     <button class="start-button" type="submit" id="startButton">Start Button</button>
 
                     <!-- Stop Button -->
                     <button class="stop-button" type="submit" id="stopButton">Stop Button</button>
+=======
+                    <div class="start-button" id="startButton" style="margin-right: 20px;">
+                        &ltStart Button&gt
+                    </div>
+                    <!-- Stop Button -->
+                    <div class="stop-button" id="stopButton">
+                        &ltStop Game Button&gt
+                    </div>
+>>>>>>> 8849896da50c079bd09c93b36343896871514d1f:A2.html
                 </div>
             </td>
         </tr>
