@@ -60,7 +60,12 @@
                         <th>Sunday</th>
                     </tr>
                     
+                    <!-- Sort the weather entries by year, month, and date in descending order -->
                     <xsl:for-each select="forecast/weather">
+                        <xsl:sort select="year" data-type="number" order="descending"/>
+                        <xsl:sort select="month" data-type="number" order="descending"/>
+                        <xsl:sort select="date" data-type="number" order="descending"/>
+
                         <tr>
                             <!-- Date column -->
                             <td class="date-col">
@@ -143,9 +148,6 @@
             <xsl:when test="overallCode = 'partlySunny'">
                 <img src="partlySunny.jpeg" alt="Partly Sunny"/>
             </xsl:when>
-            <xsl:otherwise>
-                <img src="default.jpeg" alt="Weather"/>
-            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>
